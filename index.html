@@ -107,26 +107,15 @@
     }
   </style>
   <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-    }
-
-    function toggleAudio() {
-  const audio = document.getElementById("ambient-audio");
-  if (audio.paused) {
-    audio.volume = 0.5;
-    audio.play();
-    document.getElementById("audio-toggle").disabled = true;
-    document.getElementById("audio-toggle").innerText = "...and now it plays.";
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
   }
-}
-    }
-  </script>
+</script>
 </head>
 <body>
   <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
   <button id="audio-toggle" onclick="toggleAudio()">This is the button you've wanted to press your whole life...</button>
-  <audio id="ambient-audio" loop autoplay muted oncanplay="this.muted=false">
+  <audio id="ambient-audio" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/08/04/audio_23a5cfb7cb.mp3?filename=forest-flute-ambient-115884.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -200,6 +189,18 @@
   <footer style="margin-top: 4rem; text-align: center;">
     <small>© Gen 2 • Built with care • DeltaOscarDeltaTango.com</small>
   </footer>
+
+<script>
+  function toggleAudio() {
+    const audio = document.getElementById("ambient-audio");
+    if (audio.paused) {
+      audio.volume = 0.5;
+      audio.play();
+      document.getElementById("audio-toggle").disabled = true;
+      document.getElementById("audio-toggle").innerText = "...and now it plays.";
+    }
+  }
+</script>
 
   <script>
     let currentIndex = 0;

@@ -112,13 +112,14 @@
     }
 
     function toggleAudio() {
-      const audio = document.getElementById("ambient-audio");
-      const button = document.getElementById("audio-toggle");
-      if (audio.paused) {
-        audio.volume = 0.5;
-        audio.play();
-        button.innerText = "🔇 Pause Forest Flute";
-      } else {
+  const audio = document.getElementById("ambient-audio");
+  if (audio.paused) {
+    audio.volume = 0.5;
+    audio.play();
+    document.getElementById("audio-toggle").disabled = true;
+    document.getElementById("audio-toggle").innerText = "...and now it plays.";
+  }
+} else {
         audio.pause();
         button.innerText = "🔊 Play Forest Flute";
       }
@@ -127,7 +128,7 @@
 </head>
 <body>
   <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
-  <button id="audio-toggle" onclick="toggleAudio()">🔇 Pause Forest Flute</button>
+  <button id="audio-toggle" onclick="toggleAudio()">This is the button you've wanted to press your whole life...</button>
   <audio id="ambient-audio" loop autoplay muted oncanplay="this.muted=false">
     <source src="https://cdn.pixabay.com/download/audio/2022/08/04/audio_23a5cfb7cb.mp3?filename=forest-flute-ambient-115884.mp3" type="audio/mpeg">
     Your browser does not support the audio element.

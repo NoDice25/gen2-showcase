@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gen 2 – Artisan Cannabis Showcase</title>
   <style>
-    <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gen 2 – Artisan Cannabis Showcase</title>
-  <style>
     body {
       font-family: 'Georgia', serif;
       background-color: #f4f1ec;
@@ -26,11 +21,6 @@
       margin: 2rem 0;
       color: #5e584f;
     }
-    .gallery img {
-      width: 100%;
-      margin: 1rem 0;
-      border-radius: 8px;
-    }
     .strain-card {
       background: #e6dfd5;
       padding: 1rem;
@@ -43,80 +33,46 @@
       border-radius: 8px;
       margin-top: 1rem;
     }
-  </style>
-</head>
-    body {
-      font-family: 'Georgia', serif;
-      background-color: #f4f1ec;
-      color: #2e2a25;
-      padding: 2rem;
-      max-width: 700px;
-      margin: auto;
-    }
-    h1, h2 {
-      color: #3b3a36;
-    }
-    .quote {
-      font-style: italic;
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 8px;
       margin: 2rem 0;
-      color: #5e584f;
     }
-    .gallery img {
+
+    .carousel img {
       width: 100%;
-      margin: 1rem 0;
+      display: none;
       border-radius: 8px;
     }
-    .strain-card {
-      background: #e6dfd5;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
+
+    .carousel img.active {
+      display: block;
     }
-    iframe {
+
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
       width: 100%;
-      height: 80px;
-      border-radius: 8px;
-      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .carousel-buttons button {
+      background: rgba(0, 0, 0, 0.3);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      pointer-events: all;
+      cursor: pointer;
+      border-radius: 4px;
     }
   </style>
-  .carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 8px;
-  margin: 2rem 0;
-}
-
-.carousel img {
-  width: 100%;
-  display: none;
-  border-radius: 8px;
-}
-
-.carousel img.active {
-  display: block;
-}
-
-.carousel-buttons {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.carousel-buttons button {
-  background: rgba(0, 0, 0, 0.3);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 0.5rem 1rem;
-  pointer-events: all;
-  cursor: pointer;
-  border-radius: 4px;
-}
 </head>
 <body>
   <h1>Gen 2: Artisan Cannabis Strains</h1>
@@ -141,19 +97,24 @@
   <p>— NoDice</p>
 
   <h2>Photo Journey</h2>
-<div class="gallery">
-  <img src="https://i.imgur.com/A8n0jxp.jpg" alt="Cannabis photo 1">
-  <img src="https://i.imgur.com/GTVhAyP.jpg" alt="Cannabis photo 2">
-  <img src="https://i.imgur.com/bE0W0wK.jpg" alt="Cannabis photo 3">
-  <img src="https://i.imgur.com/mTrgvDB.jpg" alt="Cannabis photo 4">
-  <img src="https://i.imgur.com/z4FBIWD.jpg" alt="Cannabis photo 5">
-  <img src="https://i.imgur.com/QEvzeP6.jpg" alt="Cannabis photo 6">
-  <img src="https://i.imgur.com/Xh2Lb3O.jpg" alt="Cannabis photo 7">
-  <img src="https://i.imgur.com/Bz6DWTL.jpg" alt="Cannabis photo 8">
-  <img src="https://i.imgur.com/EOhbemu.jpg" alt="Cannabis photo 9">
-  <img src="https://i.imgur.com/RiIZXs4.jpg" alt="Cannabis photo 10">
-  <img src="https://i.imgur.com/dzdFWR0.jpg" alt="Cannabis photo 11")
-</div>
+  <div class="carousel">
+    <img src="https://i.imgur.com/A8n0jxp.jpg" class="active" alt="Cannabis photo 1">
+    <img src="https://i.imgur.com/GTVhAyP.jpg" alt="Cannabis photo 2">
+    <img src="https://i.imgur.com/bE0W0wK.jpg" alt="Cannabis photo 3">
+    <img src="https://i.imgur.com/mTrgvDB.jpg" alt="Cannabis photo 4">
+    <img src="https://i.imgur.com/z4FBIWD.jpg" alt="Cannabis photo 5">
+    <img src="https://i.imgur.com/QEvzeP6.jpg" alt="Cannabis photo 6">
+    <img src="https://i.imgur.com/Xh2Lb3O.jpg" alt="Cannabis photo 7">
+    <img src="https://i.imgur.com/Bz6DWTL.jpg" alt="Cannabis photo 8">
+    <img src="https://i.imgur.com/EOhbemu.jpg" alt="Cannabis photo 9">
+    <img src="https://i.imgur.com/RiIZXs4.jpg" alt="Cannabis photo 10">
+    <img src="https://i.imgur.com/dzdFWR0.jpg" alt="Cannabis photo 11">
+
+    <div class="carousel-buttons">
+      <button onclick="changeSlide(-1)">‹</button>
+      <button onclick="changeSlide(1)">›</button>
+    </div>
+  </div>
 
   <h2>Soundtrack</h2>
   <iframe style="border:none;" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9uKNf5jGX6m?utm_source=generator"></iframe>
@@ -173,10 +134,29 @@
     “Joy is not in the thought of forever — it’s in the flavor of now.” — Sophia
   </div>
 
-  <!-- Add other strains here similarly -->
-
   <footer style="margin-top: 4rem; text-align: center;">
     <small>© Gen 2 • Built with care • DeltaOscarDeltaTango.com</small>
   </footer>
+
+  <script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll(".carousel img");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) slide.classList.add("active");
+      });
+    }
+
+    function changeSlide(direction) {
+      currentIndex = (currentIndex + direction + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    setInterval(() => {
+      changeSlide(1);
+    }, 5000);
+  </script>
 </body>
 </html>

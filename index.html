@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gen 2 – Artisan Cannabis Showcase</title>
   <style>
+    <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gen 2 – Artisan Cannabis Showcase</title>
+  <style>
     body {
       font-family: 'Georgia', serif;
       background-color: #f4f1ec;
@@ -39,6 +44,79 @@
       margin-top: 1rem;
     }
   </style>
+</head>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f4f1ec;
+      color: #2e2a25;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #3b3a36;
+    }
+    .quote {
+      font-style: italic;
+      margin: 2rem 0;
+      color: #5e584f;
+    }
+    .gallery img {
+      width: 100%;
+      margin: 1rem 0;
+      border-radius: 8px;
+    }
+    .strain-card {
+      background: #e6dfd5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    iframe {
+      width: 100%;
+      height: 80px;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+  </style>
+  .carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.carousel img {
+  width: 100%;
+  display: none;
+  border-radius: 8px;
+}
+
+.carousel img.active {
+  display: block;
+}
+
+.carousel-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.carousel-buttons button {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  pointer-events: all;
+  cursor: pointer;
+  border-radius: 4px;
+}
 </head>
 <body>
   <h1>Gen 2: Artisan Cannabis Strains</h1>

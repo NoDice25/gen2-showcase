@@ -114,11 +114,11 @@
 </head>
 <body>
   <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
-  <button id="audio-toggle" onclick="toggleAudio()">You won't regret this click...</button>
+  <button id="audio-toggle" onclick="toggleAudio()">You will not regret this click...</button>
   <audio id="ambient-audio" loop>
-    <source src="assets/audio/Flute.m4a" type="audio/mp4">
-    Your browser does not support the audio element.
-  </audio>
+  <source src="Flute.m4a" type="audio/mp4">
+  Your browser does not support the audio element.
+</audio>
 
   <h1>Gen 2: Artisan Cannabis Strains</h1>
   <div class="quote">
@@ -196,6 +196,14 @@
     if (audio.paused) {
       audio.volume = 0.5;
       audio.play();
+      audio.animate([
+        { volume: 0 },
+        { volume: 0.5 }
+      ], {
+        duration: 2000,
+        easing: 'ease-in-out',
+        fill: 'forwards'
+      });
       document.getElementById("audio-toggle").disabled = true;
       document.getElementById("audio-toggle").innerText = "...and now it plays.";
     }

@@ -174,25 +174,13 @@
   $1
 
   <div class="strain-card">
-    <strong>Peyote Zkittles</strong><br>
-    Euphoric, grounded, mind-opening stillness.<br>
-    Blackberry tea + flickering incense<br>
-    “Sometimes the clearest visions come from the quietest places.” — Sophia
-  </div>
+    $1<br><button onclick="playTrack('https://open.spotify.com/track/1rCIEwPp5OnXW0ornlSsRl')">▶️ Play Vibe Track</button></div>
 
   <div class="strain-card">
-    <strong>Strawberry Cheesecake</strong><br>
-    Cozy, happy, dessert-level comfort.<br>
-    Warm pastry + soft vinyl crackle<br>
-    “Pleasure is the art of slowing down time.” — Sophia
-  </div>
+    $1<br><button onclick="playTrack('https://open.spotify.com/track/5HCyWlXZPP0y6Gqq8TgA20')">▶️ Play Vibe Track</button></div>
 
   <div class="strain-card">
-    <strong>Sweet Somango</strong><br>
-    Bright, social, tropically alert.<br>
-    Mango slices + ocean breeze playlist<br>
-    “Let the day taste like something you’ll remember.” — Sophia
-  </div>
+    $1<br><button onclick="playTrack('https://open.spotify.com/track/4qUijfYoyJ2w2rqz0CjZ4s')">▶️ Play “Nightcall” by Kavinsky</button></div>
 
   <div class="strain-card">
     <strong>Zkittles</strong><br>
@@ -224,8 +212,12 @@
     }
   }
 </script>
-
-  <script>
+<script>
+  function playTrack(url) {
+    window.open(url, '_blank');
+  }
+</script>
+<script>
     let currentIndex = 0;
     const slides = document.querySelectorAll(".carousel img");
 

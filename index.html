@@ -12,6 +12,7 @@
       padding: 2rem;
       max-width: 700px;
       margin: auto;
+      transition: background 0.5s, color 0.5s;
     }
     h1, h2 {
       color: #3b3a36;
@@ -33,25 +34,28 @@
       border-radius: 8px;
       margin-top: 1rem;
     }
-
     .carousel {
       position: relative;
       width: 100%;
       overflow: hidden;
       border-radius: 8px;
       margin: 2rem 0;
+      height: 400px;
     }
-
     .carousel img {
       width: 100%;
-      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
       border-radius: 8px;
     }
-
     .carousel img.active {
-      display: block;
+      opacity: 1;
+      position: relative;
+      z-index: 1;
     }
-
     .carousel-buttons {
       position: absolute;
       top: 50%;
@@ -61,7 +65,6 @@
       transform: translateY(-50%);
       pointer-events: none;
     }
-
     .carousel-buttons button {
       background: rgba(0, 0, 0, 0.3);
       color: white;
@@ -72,9 +75,20 @@
       cursor: pointer;
       border-radius: 4px;
     }
+    body.dark {
+      background-color: #1e1e1e;
+      color: #eee;
+    }
+    body.dark .strain-card {
+      background: #333;
+    }
+    body.dark .quote {
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
+  <button onclick="toggleDarkMode()" style="margin-bottom:1rem;">🌙 Toggle Dark Mode</button>
   <h1>Gen 2: Artisan Cannabis Strains</h1>
 
   <div class="quote">
@@ -82,18 +96,9 @@
   </div>
 
   <h2>Grower’s Note</h2>
-  <p>
-    This plant is the result of time spent listening — to the soil, to the light, to the silence between cycles.
-    Each leaf, each crystalized edge, was shaped not by force but by patience.
-  </p>
-  <p>
-    I didn’t grow this just to harvest it. I grew it to understand it. To observe how something so delicate
-    could also be so certain in its becoming. The process taught me that living well doesn’t mean rushing
-    toward the end, but dwelling fully in each small stage of growth.
-  </p>
-  <p>
-    What you hold isn’t just flower — it’s a moment. And I hope it helps you stay in yours.
-  </p>
+  <p>This plant is the result of time spent listening — to the soil, to the light, to the silence between cycles. Each leaf, each crystalized edge, was shaped not by force but by patience.</p>
+  <p>I didn’t grow this just to harvest it. I grew it to understand it. To observe how something so delicate could also be so certain in its becoming. The process taught me that living well doesn’t mean rushing toward the end, but dwelling fully in each small stage of growth.</p>
+  <p>What you hold isn’t just flower — it’s a moment. And I hope it helps you stay in yours.</p>
   <p>— NoDice</p>
 
   <h2>Photo Journey</h2>
@@ -109,11 +114,28 @@
     <img src="https://i.imgur.com/EOhbemu.jpg" alt="Cannabis photo 9">
     <img src="https://i.imgur.com/RiIZXs4.jpg" alt="Cannabis photo 10">
     <img src="https://i.imgur.com/dzdFWR0.jpg" alt="Cannabis photo 11">
-
     <div class="carousel-buttons">
       <button onclick="changeSlide(-1)">‹</button>
       <button onclick="changeSlide(1)">›</button>
     </div>
+  </div>
+
+  <h2>Ask Sophia</h2>
+  <div id="sophia-quiz" style="background:#e6dfd5; padding:1rem; border-radius:8px; margin: 1rem 0;">
+    <p><strong>What kind of vibe are you chasing today?</strong></p>
+    <select id="vibe-select" style="width:100%; padding:0.5rem; border-radius:6px; margin-bottom:1rem;">
+      <option value="">— Select Your Vibe —</option>
+      <option value="calm">Calm & Centered</option>
+      <option value="creative">Creative Flow</option>
+      <option value="uplifted">Uplifted & Happy</option>
+      <option value="sleepy">Sleepy & Soft</option>
+      <option value="social">Social & Chill</option>
+      <option value="deep">Introspective & Deep</option>
+    </select>
+    <button onclick="getSophiaRecommendation()" style="padding:0.5rem 1rem; border:none; background:#3b3a36; color:white; border-radius:6px; cursor:pointer;">
+      Reveal My Strain
+    </button>
+    <div id="sophia-result" style="margin-top:1rem; font-style:italic;"></div>
   </div>
 
   <h2>Soundtrack</h2>
@@ -157,6 +179,76 @@
     setInterval(() => {
       changeSlide(1);
     }, 5000);
+
+    document.querySelector('.carousel').addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.querySelector('.carousel').addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleGesture();
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function handleGesture() {
+      if (touchEndX < touchStartX - 50) changeSlide(1);
+      if (touchEndX > touchStartX + 50) changeSlide(-1);
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+
+    function getSophiaRecommendation() {
+      const vibe = document.getElementById("vibe-select").value;
+      const resultDiv = document.getElementById("sophia-result");
+
+      const responses = {
+        calm: {
+          strain: "LA Kush",
+          pair: "Sea salt dark chocolate + Cold Brew",
+          quote: "Freedom is what you do with what’s been done to you. — Sartre"
+        },
+        creative: {
+          strain: "Blue Dream",
+          pair: "Chai latte + watercolor paints",
+          quote: "The edge of thought is where art begins. — Sophia"
+        },
+        uplifted: {
+          strain: "Pineapple Express",
+          pair: "Citrus sorbet + sunrise playlist",
+          quote: "Joy is the electricity of being fully awake. — Sophia"
+        },
+        sleepy: {
+          strain: "Granddaddy Purple",
+          pair: "Warm tea + a soft blanket",
+          quote: "Some nights are meant for drifting, not doing. — Sophia"
+        },
+        social: {
+          strain: "Gelato",
+          pair: "Fruit punch + campfire laughter",
+          quote: "Connection isn’t made — it’s remembered. — Sophia"
+        },
+        deep: {
+          strain: "Northern Lights",
+          pair: "Vinyl jazz + candlelight",
+          quote: "In silence, even the cosmos whispers back. — Sophia"
+        }
+      };
+
+      if (vibe && responses[vibe]) {
+        const { strain, pair, quote } = responses[vibe];
+        resultDiv.innerHTML = `
+          <strong>✨ Recommended Strain: ${strain}</strong><br>
+          Pair it with: ${pair}<br>
+          <em>“${quote}”</em>
+        `;
+      } else {
+        resultDiv.innerHTML = "Sophia awaits your energy. Choose a vibe first.";
+      }
+    }
   </script>
 </body>
 </html>
